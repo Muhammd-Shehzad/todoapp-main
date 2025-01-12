@@ -150,31 +150,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     return Text('No Data');
                   }
                 }),
-            // Expanded(
-            //   child: FirebaseAnimatedList(
-            //       query: db,
-            //       itemBuilder: (context, snapshot, _, Index) {
-            //         return ListTile(
-            //           title: Text(snapshot.child('title').value.toString()),
-            //           subtitle:
-            //               Text(snapshot.child('description').value.toString()),
-            //           trailing: InkWell(
-            //               onTap: () {
-            //                 db
-            //                     .child(snapshot.child('id').value.toString())
-            //                     .remove()
-            //                     .then((v) {
-            //                   ToastPoppup().toast(
-            //                       'Data Deleted', Colors.green, Colors.white);
-            //                 }).onError((Error, index) {
-            //                   ToastPoppup().toast(
-            //                       Error.toString(), Colors.red, Colors.white);
-            //                 });
-            //               },
-            //               child: Icon(Icons.delete)),
-            //         );
-            //       }),
-            // ),
+            Expanded(
+              child: FirebaseAnimatedList(
+                  query: db,
+                  itemBuilder: (context, snapshot, _, Index) {
+                    return ListTile(
+                      title: Text(snapshot.child('title').value.toString()),
+                      subtitle:
+                          Text(snapshot.child('description').value.toString()),
+                      trailing: InkWell(
+                          onTap: () {
+                            db
+                                .child(snapshot.child('id').value.toString())
+                                .remove()
+                                .then((v) {
+                              ToastPoppup().toast(
+                                  'Data Deleted', Colors.green, Colors.white);
+                            }).onError((Error, index) {
+                              ToastPoppup().toast(
+                                  Error.toString(), Colors.red, Colors.white);
+                            });
+                          },
+                          child: Icon(Icons.delete)),
+                    );
+                  }),
+            ),
 
             // Expanded(
             //   child: FirebaseAnimatedList(
